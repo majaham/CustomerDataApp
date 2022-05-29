@@ -1,0 +1,96 @@
+﻿@model IEnumerable<CustomerDataApp.Models.CustomerData>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Bussiness Entities";
+
+    Pager pager = new Pager();
+
+    int pageNo = 1;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-success ml-1">Create New</a>
+    </p>
+
+}
+<div class="row ml-2 mb-2">
+    <div class="col-md-8">
+        <form method="get" asp-action="IndexSearch">
+            <div class="row">
+                <input type="search" class="form-control col-md-8" name="CustSearch" value="@ViewBag.GetCustomer" placeholder="Search by Business name or Customer name or City" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-info ml-2">Back to List</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3 ml-auto">
+        <partial name="_pager" model="@pager" />
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>          
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>              
+                <td>
+                    <div class="btn-group">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Serno" class="btn btn-info">Edit</a>
+                        }
+
+                        <a asp-action="Details" asp-route-id="@item.Serno" class="btn btn-success ml-1">Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Serno" class="btn btn-danger ml-1">Delete</a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

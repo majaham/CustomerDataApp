@@ -1,0 +1,112 @@
+﻿@model CustomerDataApp.Models.CustomerData
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Business Info</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cell1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cell1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cell2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cell2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cell3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cell3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gstin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gstin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Din)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Din)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Turnover)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Turnover)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+<div class="btn-group">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Serno" class="btn btn-outline-success">Edit</a>
+    }
+
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+</div>
