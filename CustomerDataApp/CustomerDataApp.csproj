@@ -7,6 +7,9 @@
     <RootNamespace>CustomerDataApp</RootNamespace>
     <UserSecretsId>094bc5af-4eb4-4a93-a32f-99c8f9c72fc3</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
